@@ -16,6 +16,9 @@ $resultat = $stmt->fetch();
 //$resultat = $pdo->query($requete);
 
 if ($resultat) {
+    session_start();
+    $_SESSION['id'] = $resultat('id');
+    $_SESSION['username'] = $username;
     echo "Connexion réussie !";
 } else {
     echo "Mot de passe incorrect !";
