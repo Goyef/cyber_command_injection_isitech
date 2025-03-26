@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO("mysql:host=192.168.62.129;dbname=injection", "root", "secret", [
+$pdo = new PDO("mysql:host=192.168.194.163;dbname=injection", "root", "secret", [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ]);
 
@@ -17,9 +17,11 @@ $resultat = $stmt->fetch();
 
 if ($resultat) {
     session_start();
-    $_SESSION['id'] = $resultat('id');
+    $_SESSION['id'] = $resultat['id'];
     $_SESSION['username'] = $username;
-    echo "Connexion réussie !";
+
+    header('Location: home.php');
+
 } else {
     echo "Mot de passe incorrect !";
 }
